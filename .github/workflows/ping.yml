@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Ping HF Space
         run: |
-          curl -s https://andysp07-n8npsyjournal.hf.space/ > /dev/null
+          curl -v https://andysp07-n8npsyjournal.hf.space/ > /dev/null
