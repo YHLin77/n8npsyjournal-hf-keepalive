@@ -13,3 +13,8 @@ jobs:
       - name: Ping HF Space
         run: |
           curl -I https://andysp07-n8npsyjournal.hf.space/
+          
+      - name: Ping Supabase
+        env:
+          PGURL: ${{ secrets.SUPABASE_URL }}
+        run: psql "$PGURL" -c 'select 1' > /dev/null
