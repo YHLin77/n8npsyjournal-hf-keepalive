@@ -1,0 +1,15 @@
+name: Test Annual Reviews
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch AR feed
+        run: |
+          code=$(curl -s -o /tmp/ar.xml -w '%{http_code}' \
+            "https://www.annualreviews.org/rss/content/journals/psych/latestarticles?fmt=rss")
+          echo "status: $code"
+          echo "items: $(grep -c '<item' /tmp/ar.xml || true)"
+          head -c 400 /tmp/ar.xml
